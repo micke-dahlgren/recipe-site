@@ -2,6 +2,7 @@
   <img :src="recipe.image" :alt="recipe.id"/>
   <h3>{{recipe.title}}</h3>
   <p v-html="recipe.summary"/>
+  <button @click="$emit('add')">Add to cart</button>
 </template>
 
 <script>
@@ -9,7 +10,8 @@ export default {
   name: 'Recipe',
   props: {
     recipe: Object,
-  }
+  },
+  emits:['add']
 }
 </script>
 
