@@ -6,7 +6,7 @@
   <h1>Recipe site</h1>
   <div class="recipes">
     <div v-for="el in myArr" :key="el">
-      <Recipe @add="addToCart(el)" :recipe="el" />
+      <Recipe @remove="removeItem(el)" @add="addToCart(el)" :recipe="el" />
     </div>
   </div>
   <button @click="getData()">GET DATA</button>
@@ -41,8 +41,13 @@ export default {
       console.log(this.cart)
     },
     removeItem(removeItem) {
-      console.log(removeItem.title)
-      this.cart = this.cart.filter((item) => item.id !== removeItem.id)
+      // console.log(removeItem.title)
+      // this.cart = this.cart.filter((item) => item.id !== removeItem.id)
+
+      var idx = this.cart.indexOf(removeItem)
+      if (idx >= 0) {
+          this.cart.splice(idx, 1);
+      }
     }
     },
     created(){
