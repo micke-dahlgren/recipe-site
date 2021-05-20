@@ -45,25 +45,18 @@ export default {
     box-sizing: border-box;
   }
 
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 
-}
-
-.content{
-  width:80vw;
-  margin:auto;
-}
-
-.recipes{
-    width:850px;
-  display:grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap:16px;
-}
+  .recipes{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap:16px;
+  }
 </style>

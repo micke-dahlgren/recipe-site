@@ -1,7 +1,9 @@
 <template>
-  <img :src="recipe.image" :alt="recipe.id"/>
-  <h3>{{recipe.title}}</h3>
-  <p v-html="recipe.summary"/>
+  <div class="recipe">
+    <img :src="recipe.image" :alt="recipe.id"/>
+    <h3>{{recipe.title}}</h3>
+    <p v-html="recipe.summary"/>
+  </div>
 </template>
 
 <script>
@@ -14,9 +16,12 @@ export default {
 </script>
 
 <style scoped>
- img{
-   width: 20vw;
- }
+.recipe{
+  width: 200px;
+}
+img{
+  width: 100%;
+}
  p{
   text-align: left;
   display: -webkit-box;
