@@ -1,9 +1,12 @@
 <template >
+<div>
+  <ShoppingCart @remove="removeItem" :cart="cart"/>
+</div>
 <div class="content">
   <h1>Recipe site</h1>
   <div class="recipes">
     <div v-for="el in myArr" :key="el">
-      <Recipe :recipe="el" />
+      <Recipe @add="addToCart(el)" :recipe="el" />
     </div>
   </div>
   <button @click="getData()">GET DATA</button>
@@ -13,28 +16,38 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import Recipe from './components/Recipe.vue';
+import ShoppingCart from './components/ShoppingCart.vue';
 
 export default {
   name: 'App',
   components: {
     Recipe,
+    ShoppingCart
   },
   data(){
     return{
-     myArr: []
+     myArr: [],
+     cart: []
     }
   },
   methods: {
     async getData(){
       let res = await fetch('https://api.spoonacular.com/recipes/random?number=10&apiKey=ac54b2c3f7be4b98b26f59ef491867d6');
       let data = await res.json();
-      console.log(data)
       this.myArr = data.recipes;
+    },
+    addToCart(el){
+      this.cart.push(el)
+      console.log(this.cart)
+    },
+    removeItem(removeItem) {
+      console.log(removeItem.title)
+      this.cart = this.cart.filter((item) => item.id !== removeItem.id)
     }
-  },
-  created(){
-    this.getData();
-  }
+    },
+    created(){
+      this.getData();
+    }
 }
 </script>
 

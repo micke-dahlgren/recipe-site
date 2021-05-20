@@ -11,7 +11,8 @@ export default {
   name: 'Recipe',
   props: {
     recipe: Object,
-  }
+  },
+  emits:['add']
 }
 </script>
 
